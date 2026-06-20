@@ -1,0 +1,7 @@
+@import "@fontsource/zain/400.css";
+@import "@fontsource/zain/700.css";
+@import "@fontsource/zain/800.css";
+
+body {
+  font-family: "Zain", sans-serif;
+}
