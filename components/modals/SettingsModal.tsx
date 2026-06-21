@@ -87,6 +87,9 @@ function SettingsModal({ id }: { id: string }) {
                 <option value="نەخێر">نەخێر</option>
                 <option value="1">یەک خوولەک</option>
                 <option value="2">دوو خوولەک</option>
+                <option value="3">سێ خوولەک</option>
+                <option value="4">چوار خوولەک</option>
+                <option value="5">پێنج خوولەک</option>
               </select>
             </li>
 
