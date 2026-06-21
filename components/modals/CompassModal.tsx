@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+import { HardHat, MousePointer2Off, Pickaxe, Toolbox, X } from "lucide-react";
 
 function CompassModal({ id }: { id: string }) {
   return (
@@ -12,6 +12,11 @@ function CompassModal({ id }: { id: string }) {
             <X />
           </button>
         </form>
+
+        <section className="flex flex-col gap-2 justify-center items-center h-full">
+          <Pickaxe size={32} />
+          <h1>لە ئێستادا بەردەست نییە</h1>
+        </section>
       </div>
     </dialog>
   );
