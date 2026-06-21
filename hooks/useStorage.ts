@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { storage } from "@wxt-dev/storage";
+import { storage } from "#imports";
 
 export function useStorage<T>(
   key:
