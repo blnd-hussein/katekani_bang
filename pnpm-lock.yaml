@@ -17,7 +17,7 @@ importers:
       '@wxt-dev/storage':
         specifier: ^1.2.8
         version: 1.2.8
-      imanikurd-prayer:
+      imanikurd:
         specifier: ^1.1.1
         version: 1.1.1
       lucide-react:
@@ -1000,8 +1000,20 @@ packages:
   htmlparser2@10.1.0:
     resolution: {integrity: sha512-VTZkM9GWRAtEpveh7MSF6SjjrpNVNNVJfFup7xTY3UpFtm67foy9HDVXneLtFVt4pMz5kZtgNcvCniNFb1hlEQ==}
 
+  imanikurd-hadith@1.1.1:
+    resolution: {integrity: sha512-toV5KQWHvvHjlpml+5O9FY0NyAN/nM4nWSmC45cuATNulDt7zWxZWqMZ7vkikTGa/O9Ecq5WHLOMVxGjcOANsw==}
+    engines: {node: '>=18'}
+
   imanikurd-prayer@1.1.1:
     resolution: {integrity: sha512-YEBmE839hxSUntIhuU5Jl0m7NFwDIwMvtR7hSk55YsE/4Ho11+yewF0QEVdyYF7ruCXJtGRQgJ06YCTu4DVIeA==}
+    engines: {node: '>=18'}
+
+  imanikurd-quran@1.1.1:
+    resolution: {integrity: sha512-sWNPK/2k+FQNRvGC3MaBGyukmhXNOpCA7Dqn8MGLmWaZFl9hhSqeGrm2nJXME0VBuF+rXzEyxNsXnG26rAFC3Q==}
+    engines: {node: '>=18'}
+
+  imanikurd@1.1.1:
+    resolution: {integrity: sha512-/nKv9mtNyqYzFd2N020ZqulsNtUZuV9OROT+B6ranePwQ1wchlHdXw9mTbD+fHMw4fNrfb76ewFTgiMzM7zzVg==}
     engines: {node: '>=18'}
 
   immediate@3.0.6:
@@ -2647,7 +2659,17 @@ snapshots:
       domutils: 3.2.2
       entities: 7.0.1
 
+  imanikurd-hadith@1.1.1: {}
+
   imanikurd-prayer@1.1.1: {}
+
+  imanikurd-quran@1.1.1: {}
+
+  imanikurd@1.1.1:
+    dependencies:
+      imanikurd-hadith: 1.1.1
+      imanikurd-prayer: 1.1.1
+      imanikurd-quran: 1.1.1
 
   immediate@3.0.6: {}
 

@@ -1,5 +1,5 @@
 import { storage, defineBackground } from "#imports";
-import { getNextPrayerAsync } from "imanikurd-prayer";
+import { getNextPrayerAsync } from "imanikurd";
 
 import { SORANI_NAMES } from "@/lib/consts";
 

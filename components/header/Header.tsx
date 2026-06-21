@@ -3,7 +3,7 @@ import {
   getNextPrayerAsync,
   getCityName,
   type NextPrayer,
-} from "imanikurd-prayer";
+} from "imanikurd";
 
 import { SORANI_NAMES } from "@/lib/consts";
 import HeaderSkeleton from "./HeaderSkeleton";

@@ -1,4 +1,4 @@
-import { getPrayerCitiesAsync, getCityName } from "imanikurd-prayer";
+import { getPrayerCitiesAsync, getCityName } from "imanikurd";
 import { Bell, Clock, MapPin, X } from "lucide-react";
 import { useStorage } from "@/hooks/useStorage";
 

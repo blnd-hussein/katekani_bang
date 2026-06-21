@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useStorage } from "@/hooks/useStorage";
-import { getPrayerTimesAsync, type PrayerTimings } from "imanikurd-prayer";
+import { getPrayerTimesAsync, type PrayerTimings } from "imanikurd";
 
 import { SORANI_NAMES } from "@/lib/consts";
 import PrayersSectionSkeleton from "./PrayersSectionSkeleton";

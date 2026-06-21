@@ -1,3 +1,4 @@
+import { getDhikrCategories } from "imanikurd";
 import { X } from "lucide-react";
 
 function DhikrModal({ id }: { id: string }) {
