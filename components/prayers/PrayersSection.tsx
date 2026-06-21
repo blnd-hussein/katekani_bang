@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
+import { useStorage } from "@/hooks/useStorage";
 import { getPrayerTimesAsync, type PrayerTimings } from "imanikurd-prayer";
 
-import { CITY, SORANI_NAMES } from "@/lib/consts";
+import { SORANI_NAMES } from "@/lib/consts";
 import PrayersSectionSkeleton from "./PrayersSectionSkeleton";
 
 function PrayersSection() {
   const [prayerTimes, setPrayerTimes] = useState<PrayerTimings | null>(null);
+  const [city] = useStorage("local:city", "Slemani");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchTimes() {
       try {
-        const times = await getPrayerTimesAsync(CITY);
+        const times = await getPrayerTimesAsync(city);
         setPrayerTimes(times);
       } catch (err) {
         console.error("Error loading prayer data:", err);
@@ -21,14 +23,14 @@ function PrayersSection() {
     }
 
     fetchTimes();
-  }, []);
+  }, [city]);
 
   return (
     <section>
       {loading ? (
         <PrayersSectionSkeleton />
       ) : prayerTimes ? (
-        <ul className="flex flex-col gap-6 p-10">
+        <ul className="flex flex-col gap-6 px-10 pb-8 pt-6">
           {Object.entries(prayerTimes).map(([name, time]) => (
             <li
               key={name}

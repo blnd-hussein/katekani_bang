@@ -9,7 +9,7 @@ function Footer() {
   };
 
   return (
-    <footer className="flex justify-center items-center bg-base-100/30 w-2/3 mx-auto backdrop-blur-xs gap-5 -mt-5 rounded-tr-full rounded-bl-full p-1">
+    <footer className="flex justify-center items-center bg-base-100/30 w-2/3 mx-auto backdrop-blur-xs gap-5 -mt-3 rounded-tr-full rounded-bl-full p-1">
       <button className="cursor-pointer hover:scale-102">
         <Compass
           size={46}

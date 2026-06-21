@@ -1,3 +1,4 @@
+import { getPrayerCitiesAsync, getCityName } from "imanikurd-prayer";
 import { Bell, Clock, MapPin, X } from "lucide-react";
 import { useStorage } from "@/hooks/useStorage";
 
@@ -8,16 +9,34 @@ import background_d from "@/assets/backgrounds/background_d.webp";
 import background_e from "@/assets/backgrounds/background_e.webp";
 
 function SettingsModal({ id }: { id: string }) {
+  const [prayerCities, setPrayerCities] = useState<String[] | null>(null);
   const [city, setCity] = useStorage("local:city", "Slemani");
+
   const [notifyOnTime, setNotifyOnTime] = useStorage(
     "local:notifyOnTime",
     true,
   );
-
+  const [notifyBefore, setNotifyBefore] = useStorage(
+    "local:notifyBefore",
+    "نەخێر",
+  );
   const [backgroundIndex, setBackgroundIndex] = useStorage(
     "local:bgIndex",
     "a",
   );
+
+  useEffect(() => {
+    async function fetchCities() {
+      try {
+        const cities = await getPrayerCitiesAsync();
+        setPrayerCities(cities);
+      } catch (err) {
+        console.error("Error loading prayer data:", err);
+      }
+    }
+
+    fetchCities();
+  }, []);
 
   return (
     <dialog id={id} className="modal">
@@ -45,8 +64,13 @@ function SettingsModal({ id }: { id: string }) {
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               >
-                <option value="Slemani">سلێمانی</option>
-                <option value="Erbil">هەولێر</option>
+                {prayerCities?.map((city) => {
+                  return (
+                    <option key={city.toString()} value={city.toString()}>
+                      {getCityName(city.toString())}
+                    </option>
+                  );
+                })}
               </select>
             </li>
 
@@ -57,8 +81,8 @@ function SettingsModal({ id }: { id: string }) {
               </div>
               <select
                 className="select border-none w-32 outline-none bg-base-100/10 shadow-xs cursor-pointer"
-                value={"نەخێر"}
-                onChange={(e) => setCity(e.target.value)}
+                value={notifyBefore}
+                onChange={(e) => setNotifyBefore(e.target.value)}
               >
                 <option value="نەخێر">نەخێر</option>
                 <option value="1">یەک خوولەک</option>

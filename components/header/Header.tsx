@@ -1,11 +1,17 @@
-import { getNextPrayerAsync, type NextPrayer } from "imanikurd-prayer";
+import { useStorage } from "@/hooks/useStorage";
+import {
+  getNextPrayerAsync,
+  getCityName,
+  type NextPrayer,
+} from "imanikurd-prayer";
 
-import { CITY, SORANI_NAMES } from "@/lib/consts";
+import { SORANI_NAMES } from "@/lib/consts";
 import HeaderSkeleton from "./HeaderSkeleton";
 
 function Header() {
   const [nextPrayer, setNextPrayer] = useState<NextPrayer | null>(null);
   const [loading, setLoading] = useState(true);
+  const [city] = useStorage("local:city", "Slemani");
 
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
@@ -16,7 +22,7 @@ function Header() {
   useEffect(() => {
     async function fetchTimes() {
       try {
-        const next = await getNextPrayerAsync(CITY);
+        const next = await getNextPrayerAsync(city);
         setNextPrayer(next);
       } catch (err) {
         console.error("Error loading prayer data:", err);
@@ -26,7 +32,8 @@ function Header() {
     }
 
     fetchTimes();
-  }, []);
+  }, [city]);
+
   useEffect(() => {
     if (!nextPrayer) return;
 
@@ -60,12 +67,15 @@ function Header() {
   }, [nextPrayer]);
 
   return (
-    <header className="flex flex-col items-center justify-center gap-6 pt-12 font-bold">
+    <header className="flex flex-col items-center justify-center gap-6 pt-16 font-bold">
       {loading ? (
         <HeaderSkeleton />
       ) : (
         <>
-          <h1 className="text-3xl">
+          <h1 className="text-3xl relative">
+            <span className="text-sm absolute -top-7 left-1/2 transform -translate-x-1/2">
+              {getCityName(city)}
+            </span>
             {nextPrayer ? SORANI_NAMES[nextPrayer.name] : ""} پاش
           </h1>
           <h2 className="text-3xl" dir="ltr">
