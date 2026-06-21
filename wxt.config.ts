@@ -9,6 +9,14 @@ export default defineConfig({
     description: "کاتەکانی بانگ و زیکرەکان بە زمانی کوردی",
     version: "1.0.0",
     permissions: ["alarms", "notifications", "storage"],
+    browser_specific_settings: {
+      gecko: {
+        id: "bang-extension@blnd.pages.dev",
+        data_collection_permissions: {
+          required: ["none"],
+        },
+      },
+    },
     action: {
       default_title: "کاتەکانی بانگ",
     },
