@@ -1,12 +1,13 @@
 import Header from "@/components/header/Header";
 import PrayersSection from "@/components/prayers/PrayersSection";
+import Footer from "@/components/footer/Footer";
 
 import background_a from "/background_a.jpg";
 import "./App.css";
 
 function App() {
   return (
-    <main className="h-150 w-120 relative overflow-hidden">
+    <main className="h-150 w-120 relative overflow-hidden text-neutral-content">
       {/* Background wallpaper */}
       <img
         src={background_a}
@@ -24,7 +25,7 @@ function App() {
       <PrayersSection />
 
       {/* Settings, Etc.. */}
-      <footer className="flex justify-center items-center bg-base-100/70 backdrop-blur-xs w-2/3 mx-auto p-1.5 rounded-xl"></footer>
+      <Footer />
     </main>
   );
 }
