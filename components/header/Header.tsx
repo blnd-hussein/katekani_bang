@@ -1,9 +1,5 @@
 import { useStorage } from "@/hooks/useStorage";
-import {
-  getNextPrayerAsync,
-  getCityName,
-  type NextPrayer,
-} from "imanikurd";
+import { getNextPrayerAsync, getCityName, type NextPrayer } from "imanikurd";
 
 import { SORANI_NAMES } from "@/lib/consts";
 import HeaderSkeleton from "./HeaderSkeleton";
@@ -12,6 +8,8 @@ function Header() {
   const [nextPrayer, setNextPrayer] = useState<NextPrayer | null>(null);
   const [loading, setLoading] = useState(true);
   const [city] = useStorage("local:city", "Slemani");
+
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
@@ -32,7 +30,7 @@ function Header() {
     }
 
     fetchTimes();
-  }, [city]);
+  }, [city, refreshTrigger]);
 
   useEffect(() => {
     if (!nextPrayer) return;
@@ -53,6 +51,8 @@ function Header() {
       if (diff <= 0) {
         clearInterval(interval);
         setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+        setTimeout(() => setRefreshTrigger((prev) => prev + 1), 1000);
+        
         return;
       }
 
