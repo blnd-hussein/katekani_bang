@@ -1,0 +1,120 @@
+import { Bell, Clock, MapPin, X } from "lucide-react";
+import { useStorage } from "@/hooks/useStorage";
+
+import background_a from "@/assets/backgrounds/background_a.webp";
+import background_b from "@/assets/backgrounds/background_b.webp";
+import background_c from "@/assets/backgrounds/background_c.webp";
+import background_d from "@/assets/backgrounds/background_d.webp";
+import background_e from "@/assets/backgrounds/background_e.webp";
+
+function SettingsModal({ id }: { id: string }) {
+  const [city, setCity] = useStorage("local:city", "Slemani");
+  const [notifyOnTime, setNotifyOnTime] = useStorage(
+    "local:notifyOnTime",
+    true,
+  );
+
+  const [backgroundIndex, setBackgroundIndex] = useStorage(
+    "local:bgIndex",
+    "a",
+  );
+
+  return (
+    <dialog id={id} className="modal">
+      <div
+        className="modal-box h-full w-full rounded-none bg-neutral-content text-neutral"
+        dir="rtl"
+      >
+        <form method="dialog">
+          <button className="cursor-pointer hover:bg-base-100/10 hover:scale-101 p-1.5 rounded-full absolute left-3 top-5 transition-all">
+            <X />
+          </button>
+        </form>
+
+        <section className="mt-10 space-y-5">
+          <h3 className="font-bold text-lg">ڕێکخستن</h3>
+
+          <ul className="flex flex-col gap-7">
+            <li className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <MapPin size={20} />
+                ناوچەی بانگدان
+              </div>
+              <select
+                className="select border-none w-32 outline-none bg-base-100/10 shadow-xs cursor-pointer"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              >
+                <option value="Slemani">سلێمانی</option>
+                <option value="Erbil">هەولێر</option>
+              </select>
+            </li>
+
+            <li className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Clock size={20} />
+                ئاگادارکردنەوە پێش بانگ
+              </div>
+              <select
+                className="select border-none w-32 outline-none bg-base-100/10 shadow-xs cursor-pointer"
+                value={"نەخێر"}
+                onChange={(e) => setCity(e.target.value)}
+              >
+                <option value="نەخێر">نەخێر</option>
+                <option value="1">یەک خوولەک</option>
+                <option value="2">دوو خوولەک</option>
+              </select>
+            </li>
+
+            <li className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Bell size={20} />
+                ئاگادارکردنەوە کاتی بانگ
+              </div>
+              <fieldset className="fieldset">
+                <label className="label">
+                  <input
+                    type="checkbox"
+                    checked={notifyOnTime}
+                    onChange={(e) => setNotifyOnTime(e.target.checked)}
+                    className="checkbox border-base-100/50 bg-base-100/10 text-base-100"
+                  />
+                </label>
+              </fieldset>
+            </li>
+
+            <li className="border-b border-base-100/40"></li>
+
+            <li className="space-y-3">
+              <h4 className="text-lg">وێنەی باکگراوند</h4>
+
+              <div className="flex justify-evenly overflow-x-auto gap-4 p-2 hide-scrollbar">
+                {[
+                  { id: "a", src: background_a },
+                  { id: "b", src: background_b },
+                  { id: "c", src: background_c },
+                  { id: "d", src: background_d },
+                  { id: "e", src: background_e },
+                ].map((bg) => (
+                  <img
+                    key={bg.id}
+                    src={bg.src}
+                    alt={`Background ${bg.id.toUpperCase()}`}
+                    onClick={() => setBackgroundIndex(bg.id)}
+                    className={`min-w-28 h-42 object-cover cursor-pointer rounded-md transition-all duration-200 ${
+                      backgroundIndex === bg.id
+                        ? "ring-4 ring-primary scale-105"
+                        : "opacity-60 hover:opacity-100"
+                    }`}
+                  />
+                ))}
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </dialog>
+  );
+}
+
+export default SettingsModal;
