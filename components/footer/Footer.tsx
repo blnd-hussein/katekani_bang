@@ -1,8 +1,8 @@
 import { Cog, Compass } from "lucide-react";
 
 function Footer() {
-  const openSettingsModal = () => {
-    const modal = document.getElementById("settings") as HTMLDialogElement;
+  const openModal = (id: "compass" | "dhikr" | "settings") => {
+    const modal = document.getElementById(id) as HTMLDialogElement;
     if (modal) {
       modal.showModal();
     }
@@ -10,7 +10,10 @@ function Footer() {
 
   return (
     <footer className="flex justify-center items-center bg-base-100/30 w-2/3 mx-auto backdrop-blur-xs gap-5 -mt-3 rounded-tr-full rounded-bl-full p-1">
-      <button className="cursor-pointer hover:scale-102">
+      <button
+        className="cursor-pointer hover:scale-102"
+        onClick={() => openModal("compass")}
+      >
         <Compass
           size={46}
           strokeWidth="1"
@@ -18,7 +21,10 @@ function Footer() {
         />
       </button>
 
-      <button className="btn btn-outline backdrop-blur-xs h-full rounded-full py-4">
+      <button
+        className="btn btn-outline backdrop-blur-xs h-full rounded-full py-4"
+        onClick={() => openModal("dhikr")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlSpace="preserve"
@@ -32,7 +38,7 @@ function Footer() {
 
       <button
         className="cursor-pointer hover:scale-102"
-        onClick={openSettingsModal}
+        onClick={() => openModal("settings")}
       >
         <Cog size={46} strokeWidth="1" className="text-neutral-content/90" />
       </button>

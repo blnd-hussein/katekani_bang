@@ -11,6 +11,8 @@ import background_b from "@/assets/backgrounds/background_b.webp";
 import background_c from "@/assets/backgrounds/background_c.webp";
 import background_d from "@/assets/backgrounds/background_d.webp";
 import background_e from "@/assets/backgrounds/background_e.webp";
+import DhikrModal from "@/components/modals/DhikrModal";
+import CompassModal from "@/components/modals/CompassModal";
 
 const backgrounds: Record<string, string> = {
   a: background_a,
@@ -34,6 +36,8 @@ function App() {
       />
 
       <SettingsModal id="settings" />
+      <DhikrModal id="dhikr" />
+      <CompassModal id="compass" />
 
       {/* Overlay */}
       <div className="hero-overlay absolute inset-0 w-full h-full -z-1 bg-black/40"></div>
