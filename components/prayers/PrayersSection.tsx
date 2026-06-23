@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useStorage } from "@/hooks/useStorage";
 import { getPrayerTimesAsync, type PrayerTimings } from "imanikurd";
 
-import { SORANI_NAMES } from "@/lib/consts";
+import { PRAYER_TIMES } from "@/lib/consts";
 import PrayersSectionSkeleton from "./PrayersSectionSkeleton";
 
 function PrayersSection() {
@@ -37,7 +37,7 @@ function PrayersSection() {
               className="flex justify-between items-center text-lg"
             >
               <span className="font-mono">{time}</span>
-              <span>{SORANI_NAMES[name]}</span>
+              <span>{PRAYER_TIMES[name].label}</span>
             </li>
           ))}
         </ul>

@@ -1,7 +1,7 @@
 import { useStorage } from "@/hooks/useStorage";
 import { getNextPrayerAsync, getCityName, type NextPrayer } from "imanikurd";
 
-import { SORANI_NAMES } from "@/lib/consts";
+import { PRAYER_TIMES } from "@/lib/consts";
 import HeaderSkeleton from "./HeaderSkeleton";
 
 function Header() {
@@ -52,7 +52,7 @@ function Header() {
         clearInterval(interval);
         setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
         setTimeout(() => setRefreshTrigger((prev) => prev + 1), 1000);
-        
+
         return;
       }
 
@@ -76,7 +76,7 @@ function Header() {
             <span className="text-sm absolute -top-7 left-1/2 transform -translate-x-1/2">
               {getCityName(city)}
             </span>
-            {nextPrayer ? SORANI_NAMES[nextPrayer.name] : ""} پاش
+            {nextPrayer ? PRAYER_TIMES[nextPrayer.name].label : ""} پاش
           </h1>
           <h2 className="text-3xl" dir="ltr">
             <span className="countdown font-mono">

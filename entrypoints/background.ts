@@ -1,7 +1,7 @@
 import { storage, defineBackground } from "#imports";
 import { getNextPrayerAsync } from "imanikurd";
 
-import { SORANI_NAMES } from "@/lib/consts";
+import { PRAYER_TIMES } from "@/lib/consts";
 
 export default defineBackground(() => {
   async function scheduleNextPrayerAlarms() {
@@ -58,29 +58,32 @@ export default defineBackground(() => {
 
     // Extract prayer name from alarm name (e.g., "prayer-time-Fajr" -> "Fajr")
     const parts = alarm.name.split("-");
-    const prayerName = isEarly ? parts[2] : parts[2];
-    const kurdishName = SORANI_NAMES[prayerName] || prayerName;
+    const prayerName = parts[2];
+
+    const prayer = PRAYER_TIMES[prayerName];
+    const kurdishLabel = prayer?.label || prayerName;
 
     if (isOnTime) {
-      browser.notifications.create({
-        type: "basic",
-        iconUrl: "/icon/128.png",
-        title: `کاتی بانگە`,
-        message: `کاتی ${kurdishName}ە`,
-      });
-
+      if (prayerName !== "Sunrise") {
+        browser.notifications.create({
+          type: "basic",
+          iconUrl: "/icon/128.png",
+          title: `کاتی بانگە`,
+          message: prayer?.message || `کاتی ${kurdishLabel}ە`,
+        });
+      }
       // Wait 1 minute, then calculate the NEXT prayer.
       // (Delay ensures we don't accidentally fetch the current prayer again)
       setTimeout(scheduleNextPrayerAlarms, 60000);
     }
 
-    if (isEarly) {
+    if (isEarly && prayerName !== "Sunrise") {
       const minutes = parts[3]; // e.g., "prayer-early-Fajr-5" -> "5"
       browser.notifications.create({
         type: "basic",
         iconUrl: "/icon/128.png",
         title: "نزیکبوونەوەی کاتی بانگ",
-        message: `تەنها ${minutes} خوولەک ماوە بۆ ${kurdishName}.`,
+        message: `تەنها ${minutes} خوولەک ماوە بۆ ${kurdishLabel}.`,
       });
     }
   });
