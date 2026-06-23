@@ -60,14 +60,18 @@ function SettingsModal({ id }: { id: string }) {
                 ناوچەی بانگدان
               </div>
               <select
-                className="select border-none w-32 outline-none bg-base-100/10 shadow-xs cursor-pointer"
+                className="select border-none w-36 outline-none bg-[#cdcfd2] shadow-xs cursor-pointer space-y-2.5"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               >
-                {prayerCities?.map((city) => {
+                {prayerCities?.map((c) => {
                   return (
-                    <option key={city.toString()} value={city.toString()}>
-                      {getCityName(city.toString())}
+                    <option 
+                      key={c.toString()} 
+                      value={c.toString()}
+                      className={`py-2 px-1.2 bg-base-100/10 active:text-neutral ${c.toString() === city && "bg-primary! text-primary-content"}`}
+                      >
+                      {getCityName(c.toString())}
                     </option>
                   );
                 })}
@@ -80,16 +84,40 @@ function SettingsModal({ id }: { id: string }) {
                 ئاگادارکردنەوە پێش بانگ
               </div>
               <select
-                className="select border-none w-32 outline-none bg-base-100/10 shadow-xs cursor-pointer"
+                className="select border-none w-36 outline-none bg-[#cdcfd2] shadow-xs cursor-pointer space-y-2.5"
                 value={notifyBefore}
                 onChange={(e) => setNotifyBefore(e.target.value)}
               >
-                <option value="نەخێر">نەخێر</option>
-                <option value="1">یەک خوولەک</option>
-                <option value="2">دوو خوولەک</option>
-                <option value="3">سێ خوولەک</option>
-                <option value="4">چوار خوولەک</option>
-                <option value="5">پێنج خوولەک</option>
+                <option
+                  value="نەخێر"
+                  className="py-2 px-1 bg-base-100/10 active:text-neutral"
+                >
+                  نەخێر
+                </option>
+                <option
+                  value="5"
+                  className="py-2 px-1 bg-base-100/10 active:text-neutral"
+                >
+                  5 خوولەک
+                </option>
+                <option
+                  value="10"
+                  className="py-2 px-1 bg-base-100/10 active:text-neutral"
+                >
+                  10 خوولەک
+                </option>
+                <option
+                  value="15"
+                  className="py-2 px-1 bg-base-100/10 active:text-neutral"
+                >
+                  15 خوولەک
+                </option>
+                <option
+                  value="20"
+                  className="py-2 px-1 bg-base-100/10 active:text-neutral"
+                >
+                  20 خوولەک
+                </option>
               </select>
             </li>
 
