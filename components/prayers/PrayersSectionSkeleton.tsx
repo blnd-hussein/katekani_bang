@@ -1,6 +1,6 @@
 function PrayersSectionSkeleton() {
   return (
-    <div className="flex flex-col gap-7 p-10">
+    <div className="flex flex-col gap-7 px-10 py-7.5">
       {[...Array(6)].map((_, index) => {
         return (
           <div key={index} className="flex justify-between items-center">
