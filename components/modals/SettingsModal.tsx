@@ -2,11 +2,7 @@ import { getPrayerCitiesAsync, getCityName } from "imanikurd";
 import { Bell, Clock, MapPin, X } from "lucide-react";
 import { useStorage } from "@/hooks/useStorage";
 
-import background_a from "@/assets/backgrounds/background_a.webp";
-import background_b from "@/assets/backgrounds/background_b.webp";
-import background_c from "@/assets/backgrounds/background_c.webp";
-import background_d from "@/assets/backgrounds/background_d.webp";
-import background_e from "@/assets/backgrounds/background_e.webp";
+import { BACKGROUNDS } from "@/lib/consts";
 
 function SettingsModal({ id }: { id: string }) {
   const [prayerCities, setPrayerCities] = useState<String[] | null>(null);
@@ -66,11 +62,11 @@ function SettingsModal({ id }: { id: string }) {
               >
                 {prayerCities?.map((c) => {
                   return (
-                    <option 
-                      key={c.toString()} 
+                    <option
+                      key={c.toString()}
                       value={c.toString()}
                       className={`py-2 px-1.2 bg-base-100/10 active:text-neutral ${c.toString() === city && "bg-primary! text-primary-content"}`}
-                      >
+                    >
                       {getCityName(c.toString())}
                     </option>
                   );
@@ -144,13 +140,7 @@ function SettingsModal({ id }: { id: string }) {
               <h4 className="text-lg">وێنەی باکگراوند</h4>
 
               <div className="flex justify-evenly overflow-x-auto gap-4 p-2 hide-scrollbar">
-                {[
-                  { id: "a", src: background_a },
-                  { id: "b", src: background_b },
-                  { id: "c", src: background_c },
-                  { id: "d", src: background_d },
-                  { id: "e", src: background_e },
-                ].map((bg) => (
+                {BACKGROUNDS.map((bg) => (
                   <img
                     key={bg.id}
                     src={bg.src}

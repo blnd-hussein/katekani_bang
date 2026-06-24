@@ -32,4 +32,32 @@ export const PRAYER_TIMES: PRAYER_TIMES_TYPE = {
   },
 };
 
-export const CITY = "Slemani";
+export const BACKGROUNDS: {
+  id: string;
+  src: string;
+}[] = [
+  {
+    id: "a",
+    src: "https://ik.imagekit.io/oouq13ico/prayer_times/background_a.webp",
+  },
+  {
+    id: "b",
+    src: "https://ik.imagekit.io/oouq13ico/prayer_times/background_b.webp",
+  },
+  {
+    id: "c",
+    src: "https://ik.imagekit.io/oouq13ico/prayer_times/background_c.webp",
+  },
+  {
+    id: "d",
+    src: "https://ik.imagekit.io/oouq13ico/prayer_times/background_d.webp",
+  },
+  {
+    id: "e",
+    src: "https://ik.imagekit.io/oouq13ico/prayer_times/background_e.webp",
+  },
+  {
+    id: "f",
+    src: "https://ik.imagekit.io/oouq13ico/prayer_times/background_f.webp",
+  },
+];
