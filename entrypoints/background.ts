@@ -53,6 +53,13 @@ export default defineBackground(() => {
 
   // 2. Listen for Alarms going off
   browser.alarms.onAlarm.addListener((alarm) => {
+    const isLate = Date.now() - alarm.scheduledTime > 120_000;
+
+    if (isLate) {
+      scheduleNextPrayerAlarms();
+      return;
+    }
+
     const isEarly = alarm.name.startsWith("prayer-early-");
     const isOnTime = alarm.name.startsWith("prayer-time-");
 
