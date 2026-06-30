@@ -51,7 +51,7 @@ function SettingsModal({ id }: { id: string }) {
         <section className="mt-10 space-y-5">
           <h3 className="font-bold text-lg">ڕێکخستن</h3>
 
-          <ul className="flex flex-col gap-7">
+          <ul className="flex flex-col gap-7 text-sm">
             <li className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MapPin size={20} />

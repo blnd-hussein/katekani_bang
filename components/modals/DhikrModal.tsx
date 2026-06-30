@@ -63,7 +63,7 @@ function DhikrModal({ id }: { id: string }) {
           </button>
         </form>
 
-        <section className="h-138 pt-12">
+        <section className="h-138 pt-12 text-base">
           <ul className="overflow-y-auto h-full space-y-2 hide-scrollbar">
             {selectedCategory
               ? dhikrContent &&

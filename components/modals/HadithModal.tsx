@@ -53,7 +53,7 @@ function HadithModal({ id }: { id: string }) {
                   <Sprout className="mx-auto text-primary/90" />
                   فەرموودەی ڕۆژ
                 </span>
-                <p className="bg-base-100/5 shadow-xs p-2 rounded-full">
+                <p className="text-base bg-base-100/5 shadow-xs p-2 rounded-full">
                   {dailyHadith.title}
                 </p>
               </header>
@@ -67,7 +67,7 @@ function HadithModal({ id }: { id: string }) {
 
               <hr className="border-base-100/40" />
 
-              <p className="text-md font-medium leading-8 ">
+              <p className="text-base font-medium leading-8 ">
                 <Flower size={20} className="inline me-2 text-primary/80" />
                 {dailyHadith.kurdish}
               </p>
