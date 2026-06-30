@@ -4,7 +4,7 @@ import { BACKGROUNDS } from "@/lib/consts";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import DhikrModal from "@/components/modals/DhikrModal";
-import CompassModal from "@/components/modals/CompassModal";
+import HadithModal from "@/components/modals/HadithModal";
 import SettingsModal from "@/components/modals/SettingsModal";
 import PrayersSection from "@/components/prayers/PrayersSection";
 
@@ -26,7 +26,7 @@ function App() {
 
       <SettingsModal id="settings" />
       <DhikrModal id="dhikr" />
-      <CompassModal id="compass" />
+      <HadithModal id="hadith" />
 
       {/* Overlay */}
       <div className="hero-overlay absolute inset-0 w-full h-full -z-1 bg-black/40"></div>

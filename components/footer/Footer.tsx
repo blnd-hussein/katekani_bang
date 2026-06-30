@@ -1,7 +1,7 @@
-import { Cog, Compass } from "lucide-react";
+import { Sprout, UserRoundCog } from "lucide-react";
 
 function Footer() {
-  const openModal = (id: "compass" | "dhikr" | "settings") => {
+  const openModal = (id: "hadith" | "dhikr" | "settings") => {
     const modal = document.getElementById(id) as HTMLDialogElement;
     if (modal) {
       modal.showModal();
@@ -9,16 +9,12 @@ function Footer() {
   };
 
   return (
-    <footer className="flex justify-center items-center bg-base-100/30 w-2/3 mx-auto backdrop-blur-xs gap-4.5 -mt-2 rounded-tr-full rounded-bl-full p-1 h-20">
+    <footer className="flex justify-center items-center bg-base-100/30 w-2/3 mx-auto backdrop-blur-xs gap-4.5 -mt-2 rounded-full p-1 h-20">
       <button
         className="cursor-pointer hover:scale-102"
-        onClick={() => openModal("compass")}
+        onClick={() => openModal("hadith")}
       >
-        <Compass
-          size={46}
-          strokeWidth="1"
-          className="text-neutral-content/90"
-        />
+        <Sprout size={46} strokeWidth="1" className="text-neutral-content/90" />
       </button>
 
       <button
@@ -40,7 +36,11 @@ function Footer() {
         className="cursor-pointer hover:scale-102"
         onClick={() => openModal("settings")}
       >
-        <Cog size={46} strokeWidth="1" className="text-neutral-content/90" />
+        <UserRoundCog
+          size={46}
+          strokeWidth="1"
+          className="text-neutral-content/90"
+        />
       </button>
     </footer>
   );
