@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getHadithsAsync, type Hadith } from "imanikurd";
 
 import { Flower, Sprout, X } from "lucide-react";

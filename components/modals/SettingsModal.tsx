@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
+
 import { getPrayerCitiesAsync, getCityName } from "imanikurd";
 import { Bell, Clock, MapPin, X } from "lucide-react";
-import { useStorage } from "@/hooks/useStorage";
 
+import { useStorage } from "@/hooks/useStorage";
 import { BACKGROUNDS } from "@/lib/consts";
 
 function SettingsModal({ id }: { id: string }) {
