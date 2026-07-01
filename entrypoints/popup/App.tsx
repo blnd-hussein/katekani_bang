@@ -4,7 +4,7 @@ import { BACKGROUNDS } from "@/lib/consts";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import DhikrModal from "@/components/modals/DhikrModal";
-import HadithModal from "@/components/modals/HadithModal";
+import HadithModal from "@/components/modals/hadith/HadithModal";
 import SettingsModal from "@/components/modals/SettingsModal";
 import PrayersSection from "@/components/prayers/PrayersSection";
 
