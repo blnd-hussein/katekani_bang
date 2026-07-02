@@ -28,19 +28,19 @@ function DailyHadith({ hadithsList }: { hadithsList: Hadith[] | null }) {
               <Sprout className="mx-auto text-primary/90" />
               فەرموودەی ڕۆژ
             </span>
-            <p className="text-base bg-base-100/5 shadow-xs p-2 rounded-full">
+            <p className="text-base bg-base-100/5 shadow-xs p-2 rounded-full text-center">
               {dailyHadith.title}
             </p>
           </header>
 
-          <hr className="border-base-100/40" />
+          <hr className="border-base-100/30" />
 
           <p className="text-base font-bold leading-8">
             <Flower size={20} className="inline me-2 text-primary/80" />
             {dailyHadith.arabic}
           </p>
 
-          <hr className="border-base-100/40" />
+          <hr className="border-base-100/30" />
 
           <p className="text-base font-medium leading-8 ">
             <Flower size={20} className="inline me-2 text-primary/80" />
