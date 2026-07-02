@@ -9,10 +9,12 @@ function DailyHadith({ hadithsList }: { hadithsList: Hadith[] | null }) {
   useEffect(() => {
     if (hadithsList && hadithsList.length > 0) {
       const now = new Date();
-      const start = new Date(now.getFullYear(), 0, 0);
-      const diff = now.getTime() - start.getTime();
+
+      const start = Date.UTC(now.getFullYear(), 0, 1);
+      const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+
       const oneDay = 1000 * 60 * 60 * 24;
-      const dayOfYear = Math.floor(diff / oneDay);
+      const dayOfYear = Math.floor((today - start) / oneDay);
 
       const nameIndex = dayOfYear % hadithsList.length;
       setDailyHadith(hadithsList[nameIndex]);
