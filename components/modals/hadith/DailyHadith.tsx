@@ -40,6 +40,8 @@ function DailyHadith({ hadithsList }: { hadithsList: Hadith[] | null }) {
             {dailyHadith.arabic}
           </p>
 
+          <hr className="border-base-100/40" />
+
           <p className="text-base font-medium leading-8 ">
             <Flower size={20} className="inline me-2 text-primary/80" />
             {dailyHadith.kurdish}

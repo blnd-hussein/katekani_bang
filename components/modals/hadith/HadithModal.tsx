@@ -1,12 +1,14 @@
-import { useState, useEffect, Activity } from "react";
-import { Flower2, Sprout, X } from "lucide-react";
+import { useState, useEffect, SubmitEvent } from "react";
 import { getHadithsAsync, type Hadith } from "imanikurd";
+
+import { Flower2, PanelLeftClose, Sprout, X } from "lucide-react";
 
 import DailyHadith from "./DailyHadith";
 import HadithList from "./HadithList";
 
 function HadithModal({ id }: { id: string }) {
   const [hadiths, setHadiths] = useState<Hadith[] | null>(null);
+  const [readingMode, setReadingMode] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<"daily" | "all">("daily");
 
   useEffect(() => {
@@ -22,28 +24,37 @@ function HadithModal({ id }: { id: string }) {
     fetchHadiths();
   }, []);
 
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    if (readingMode) {
+      e.preventDefault();
+      setReadingMode(false);
+    }
+  };
+
   return (
     <dialog id={id} className="modal">
       <div
         className="modal-box py-4 h-full w-full rounded-none bg-neutral-content text-neutral"
         dir="rtl"
       >
-        <form method="dialog">
-          <button className="cursor-pointer hover:bg-base-100/10 hover:scale-101 p-1.5 rounded-full absolute left-3 top-4 transition-all">
-            <X />
+        <form method="dialog" onSubmit={(e) => handleSubmit(e)}>
+          <button className="cursor-pointer hover:bg-base-100/10 hover:scale-101 p-1.5 rounded-full absolute left-3 top-5 transition-all">
+            {readingMode ? <PanelLeftClose /> : <X />}
           </button>
         </form>
 
-        <section className="grid grid-rows-[460px__60px] gap-2 place-content-between pt-8 h-full overflow-clip">
-          <>
-            <Activity mode={activeSection === "daily" ? "visible" : "hidden"}>
+        <section className="grid grid-rows-[450px__60px] gap-2 place-content-between pt-12 h-full overflow-clip">
+          <section className="min-w-[26.970rem]">
+            {activeSection === "daily" ? (
               <DailyHadith hadithsList={hadiths} />
-            </Activity>
-
-            <Activity mode={activeSection === "all" ? "visible" : "hidden"}>
-              <HadithList />
-            </Activity>
-          </>
+            ) : (
+              <HadithList
+                hadithsList={hadiths}
+                readingMode={readingMode}
+                setReadingMode={setReadingMode}
+              />
+            )}
+          </section>
 
           <nav className="flex justify-evenly items-center bg-base-100/10 rounded-full shadow-xs w-46 mx-auto">
             <button
