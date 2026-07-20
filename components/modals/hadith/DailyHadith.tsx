@@ -22,7 +22,7 @@ function DailyHadith({ hadithsList }: { hadithsList: Hadith[] | null }) {
   }, [hadithsList]);
 
   return (
-    <article className="flex flex-col gap-6 h-full overflow-auto hide-scrollbar">
+    <article className="flex flex-col gap-6 h-full">
       {dailyHadith && (
         <>
           <header className="flex flex-col items-center gap-2">

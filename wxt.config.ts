@@ -7,7 +7,7 @@ export default defineConfig({
     name: "کاتەکانی بانگ",
     short_name: "بانگ",
     description: "کاتەکانی بانگ و زیکرەکان بە زمانی کوردی",
-    version: "1.0.4",
+    version: "1.0.5",
     permissions: ["alarms", "notifications", "storage"],
     browser_specific_settings: {
       gecko: {

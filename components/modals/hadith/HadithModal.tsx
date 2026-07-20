@@ -4,12 +4,10 @@ import { getHadithsAsync, type Hadith } from "imanikurd";
 import { Flower2, PanelLeftClose, Sprout, X } from "lucide-react";
 
 import DailyHadith from "./DailyHadith";
-import HadithList from "./HadithList";
 
 function HadithModal({ id }: { id: string }) {
   const [hadiths, setHadiths] = useState<Hadith[] | null>(null);
   const [readingMode, setReadingMode] = useState<boolean>(false);
-  const [activeSection, setActiveSection] = useState<"daily" | "all">("daily");
 
   useEffect(() => {
     async function fetchHadiths() {
@@ -34,7 +32,7 @@ function HadithModal({ id }: { id: string }) {
   return (
     <dialog id={id} className="modal">
       <div
-        className="modal-box py-4 h-full w-full rounded-none bg-neutral-content text-neutral"
+        className="modal-box py-4 h-full w-full rounded-none bg-neutral-content text-neutral hide-scrollbar"
         dir="rtl"
       >
         <form method="dialog" onSubmit={(e) => handleSubmit(e)}>
@@ -42,35 +40,8 @@ function HadithModal({ id }: { id: string }) {
             {readingMode ? <PanelLeftClose /> : <X />}
           </button>
         </form>
-
-        <section className="grid grid-rows-[450px__60px] gap-2 place-content-between pt-12 h-full overflow-clip">
-          <section className="min-w-[26.970rem]">
-            {activeSection === "daily" ? (
-              <DailyHadith hadithsList={hadiths} />
-            ) : (
-              <HadithList
-                hadithsList={hadiths}
-                readingMode={readingMode}
-                setReadingMode={setReadingMode}
-              />
-            )}
-          </section>
-
-          <nav className="flex justify-evenly items-center bg-base-100/10 rounded-full shadow-xs w-46 mx-auto">
-            <button
-              className={`cursor-pointer ${activeSection === "all" && "text-primary"}`}
-              onClick={() => setActiveSection("all")}
-            >
-              <Flower2 size={25} className="hover:scale-105 active:scale-100" />
-            </button>
-
-            <button
-              className={`cursor-pointer ${activeSection === "daily" && "text-primary"}`}
-              onClick={() => setActiveSection("daily")}
-            >
-              <Sprout size={26} className="hover:scale-105 active:scale-100" />
-            </button>
-          </nav>
+        <section className="pt-12 text-base">
+          <DailyHadith hadithsList={hadiths} />
         </section>
       </div>
     </dialog>
